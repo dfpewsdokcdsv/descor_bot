@@ -4,7 +4,7 @@ from discord.ext import commands
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='$', intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
@@ -16,7 +16,9 @@ async def hello(ctx):
 @bot.command()
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
-
+@bot.command()
+async def help(ctx):
+    await ctx.send(f'У меня есть такие команды как: heh, hello, random_number, банить и мьютить! А чтобы узнать что эти команды делают, пропиши их вместе с !')
 @bot.command()
 async def random_number(ctx):
     number = random.randint(1, 10)
